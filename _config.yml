@@ -1,0 +1,12 @@
+title: "물류 정보"
+description: "수출입 물류, 통관, 운송, 관세, 해외특송 실무 인사이트"
+url: "https://kbridge05.github.io"
+baseurl: ""
+
+permalink: /blog/:title/
+
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
