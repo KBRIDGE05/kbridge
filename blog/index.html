@@ -1,0 +1,64 @@
+---
+layout: default
+title: 물류 정보
+description: 해상운송, 항공운송, 통관, 관세, 해외특송, 공급망 이슈를 실무자가 이해하기 쉬운 정보로 정리합니다.
+---
+
+<section class="blog-hero">
+  <div class="wrap">
+    <p class="kicker">KBRIDGE INSIGHT</p>
+    <h1>물류 정보</h1>
+    <p>수출입 물류 실무에 필요한 <strong>물류정보</strong>와 시장 변화에 대응하기 위한 <strong>시황·정책</strong>을 정리합니다.</p>
+  </div>
+</section>
+
+<section class="blog-list">
+  <div class="wrap">
+    <div class="blog-category-tabs" aria-label="블로그 카테고리">
+      <button type="button" class="active" data-category="all">전체</button>
+      <button type="button" data-category="물류정보">물류정보</button>
+      <button type="button" data-category="시황·정책">시황·정책</button>
+    </div>
+
+    {% if site.posts.size > 0 %}
+    <div class="blog-grid" id="blogGrid">
+      {% for post in site.posts %}
+        <article class="blog-card" data-category="{{ post.category }}">
+          <a href="{{ post.url | relative_url }}">
+            <span class="blog-category">{{ post.category }}</span>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.description }}</p>
+            <time>{{ post.date | date: "%Y.%m.%d" }}</time>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="blog-empty-page">
+      <strong>아직 등록된 글이 없습니다.</strong>
+      <p>새 글을 올리면 이 영역에 블로그 카드가 자동으로 표시됩니다.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  (function(){
+    const tabs = Array.from(document.querySelectorAll('.blog-category-tabs button'));
+    const cards = Array.from(document.querySelectorAll('.blog-card'));
+    if (!tabs.length || !cards.length) return;
+
+    function applyCategory(category){
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.category === category));
+      cards.forEach(card => {
+        const show = category === 'all' || card.dataset.category === category;
+        card.style.display = show ? '' : 'none';
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => applyCategory(tab.dataset.category));
+    });
+  })();
+</script>
+

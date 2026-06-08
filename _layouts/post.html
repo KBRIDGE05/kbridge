@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<main class="post-wrap">
+  <article class="post">
+    <p class="post-category">{{ page.category }}</p>
+    <h1>{{ page.title }}</h1>
+    <p class="post-date">{{ page.date | date: "%Y.%m.%d" }}</p>
+
+    {% if page.description %}
+    <div class="post-summary">
+      {{ page.description }}
+    </div>
+    {% endif %}
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <div class="post-bottom">
+      <a href="{{ '/blog/' | relative_url }}">← 블로그 목록으로</a>
+    </div>
+  </article>
+</main>
